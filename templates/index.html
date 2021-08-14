@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href={% static "/style.css" %}>
+
+
+</head>
+
+<body>
+    <div id="drop-area">
+        <form class="my-form" action="/parser/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Перетащите сюда файл</p>
+            <input type="file" id="fileElem" name="table" multiple accept=".xlsx" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Выбрать файл</label>
+            <p><div class='fileview'><p></p></div></p>
+            <button style='display:none' class="submit_button button" type="submit">Отправить</button>
+        </form>
+        
+
+        {% if uploaded_file_url %}
+            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        {% endif %}
+    </div>
+
+    
+<script src={% static "/script.js" %}> </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href={% static "/style.css" %}>
+
+
+</head>
+
+<body>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="myfile">
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if uploaded_file_url %}
+            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        {% endif %}
+    <!-- <div id="drop-area">
+        <form class="my-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Перетащите сюда файл</p>
+            <input type="file" id="fileElem" multiple accept=".xlsx" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Выбрать файл</label>
+            <button type="submit">отправить</button>
+        </form>
+        <progress id="warning" style="display:none"  max=100 value=0></progress>
+        </div>
+    </div>
+
+<script src={% static "/script.js" %}> </script> -->
+</body>
+
+</html>
+
+
+<!-- {% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+
+  {% comment %} <p><a href="{% url 'home' %}">Return to home</a></p> {% endcomment %}
+{% endblock %} -->
