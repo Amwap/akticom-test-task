@@ -6,7 +6,7 @@ from .models import *
 
 
 class Table(View):
-    """ Отображение таблицы с пагинацией """ 
+    """ Рекурсивное oтображение данных с пагинацией """ 
 
     def get(self, request):
         data = request.GET
