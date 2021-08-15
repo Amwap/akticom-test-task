@@ -6,11 +6,12 @@ from .static import save_file, parser, validator, DB
 
 
 def page(request):
+    """ Вью для индексной страницы"""
     return render(request, 'index.html')
 
 
 def data_parser(request):
-    print(dict(request.FILES), 'HERE')
+    """ Валидация файла с редиректами """
     file = request.FILES['table']
     if validator(file.name): return redirect('/')
     path = save_file(file)
@@ -20,8 +21,6 @@ def data_parser(request):
 
 
 def wipe_data(request):
+    """ Удаление данных о продукции """
     DB().wipe_data()
     return redirect('/')
-# def data_view(request):
-#     products = Product.objects.all
-#     return render(request, 'table.html', {"products": products})
