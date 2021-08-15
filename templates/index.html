@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href={% static "/style.css" %}>
+    <link rel="stylesheet" href={% static "/styles/style.css" %}>
 
 
 </head>
 
 <body>
     <div id="drop-area">
-        <form class="my-form" action="/parser/" method="POST" enctype="multipart/form-data">
+        <form class="my-form" action="/data_parser/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <p>Перетащите сюда файл</p>
+            <p style='text-align: center'>Перетащите xlsx файл сюда<br>или добавьте вручную</p>
             <input type="file" id="fileElem" name="table" multiple accept=".xlsx" onchange="handleFiles(this.files)">
             <label class="button" for="fileElem">Выбрать файл</label>
             <p><div class='fileview'><p></p></div></p>
-            <button style='display:none' class="submit_button button" type="submit">Отправить</button>
+            <button style='display:none' class="submit_button button" type="submit">Загрузить данные</button>
         </form>
         
 
@@ -32,6 +32,6 @@
     </div>
 
     
-<script src={% static "/script.js" %}> </script>
+<script src={% static "/scripts/script.js" %}> </script>
 </body>
 </html>

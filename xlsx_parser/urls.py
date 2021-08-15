@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include
 
 from myapp import views
+from myapp import table_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page, name='page'),
-    path('parser/', views.parser, name='parser')
+    path('data_parser/', views.data_parser, name='data_parser'),
+    path('data_view/', table_view.Table.as_view())
 ]
