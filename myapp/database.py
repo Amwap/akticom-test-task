@@ -7,10 +7,9 @@ class DB():
         self.rows = []
 
 
-    def set_header(self, header:list):
+    def set_header(self, header:list) -> None:
         """ устанавливает header строки """
         self.header = header
-        # dict(zip(self.rows, ))
 
 
     def add_to_db(self, line:list):
@@ -51,3 +50,7 @@ class DB():
         level2 = Level2.objects.get_or_create(name=name2)
         level3 = Level3.objects.get_or_create(name=name3)
         return level1[0], level2[0], level3[0]
+
+    
+    def wipe_data(self):
+        Product.objects.all().delete()

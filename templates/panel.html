@@ -1,0 +1,21 @@
+<form class="next_buttons" action="/data_view"> 
+    <button type="submit" name="skipped_page" value="-1" class="header-button">
+        <p><b> ← 1 </b></p>
+    </button>
+    <button type="submit" name="skipped_page" value="-5" class="header-button">
+        <p><b> ← 5 </b></p>
+    </button>
+    <div name='current_page' value="{{ current_page }}"><p>Страниц {{ current_page }}/{{ all_pages }}</p></div>
+    <button type="submit" name="skipped_page" value="0" class="header-button">
+        <p><b>Показать</b></p>
+    </button>
+    <input style='display:none' name="current_page" value="{{ current_page }}">
+
+    <div>Записей<input type="number" min="1" max="{{ count_items }}" size="5" name="items" value="{{ items }}" onclick="update_link(this.value)"> из {{ count_items }} </div>
+    <button type="submit" name="skipped_page" value="5" class="header-button">
+        <p><b> 5 → </b></p>
+    </button>
+    <button type="submit" name="skipped_page" value="1" class="header-button">
+        <p><b> 1 → </b></p>
+    </button>
+</form>

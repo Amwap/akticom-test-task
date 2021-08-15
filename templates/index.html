@@ -22,7 +22,7 @@
             <input type="file" id="fileElem" name="table" multiple accept=".xlsx" onchange="handleFiles(this.files)">
             <label class="button" for="fileElem">Выбрать файл</label>
             <p><div class='fileview'><p></p></div></p>
-            <button style='display:none' class="submit_button button" type="submit">Загрузить данные</button>
+            <button style='display:none' class="submit_button button" type="submit" onclick="waiting_upload(this)">Загрузить данные</button>
         </form>
         
 

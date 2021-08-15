@@ -1,13 +1,12 @@
 from django.views.generic.base import View
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from django.db.models import Q
 
 from .models import *
 
 
 class Table(View):
-    """ Одевайте скафандры. Дальше будет весело! """ 
+    """ Отображение таблицы с пагинацией """ 
 
     def get(self, request):
         data = request.GET
@@ -25,8 +24,6 @@ class Table(View):
 
 
         data = Product.objects.all()
-        # archive = list(reversed(data))
-        # print(archive)
         count_items = data.count()
         paginator = Paginator(data, items)
         page_obj = paginator.get_page(current_page)

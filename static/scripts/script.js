@@ -41,10 +41,13 @@ function handleDrop(e) {
 }
 
 function handleFiles(files) {
-    files = [...files]
+    var fileElem = document.querySelector('#fileElem')
+    fileElem.files = files
+    console.log(document.querySelector('#fileElem').files)
+    console.log(files)
+    file = [...files]
     var file_name_field = document.querySelector('.fileview')
-    var text = document.createElement('p');
-    var status = validation(files[0].name)
+    var status = validation(file[0].name)
     if (status == false){
         file_name_field.innerHTML = "Невозможно загрузить данный файл"
         var button = document.querySelector('.submit_button')
@@ -53,7 +56,7 @@ function handleFiles(files) {
         dropArea.style.borderColor = 'rgb(255, 0, 0)'
         
     }else{
-        file_name_field.innerHTML = files[0].name
+        file_name_field.innerHTML = file[0].name
         var button = document.querySelector('.submit_button')
         button.style.display = 'block'
         var dropArea = document.getElementById("drop-area")
@@ -67,4 +70,11 @@ function validation(filename){
     }else{ return false }
 }
 
+
+function waiting_upload(button){
+    button.style.pointerEvents = 'none'
+    button.innerText = "Данные загружаются"
+    button.style.background = 'rgb(255, 250, 0)'
+
+}
 

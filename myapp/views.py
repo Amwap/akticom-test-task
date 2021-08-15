@@ -2,7 +2,7 @@ from myapp.models import Product
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 
-from .static import save_file, parser, validator
+from .static import save_file, parser, validator, DB
 
 
 def page(request):
@@ -10,7 +10,7 @@ def page(request):
 
 
 def data_parser(request):
-    print(request.FILES, 'HERE')
+    print(dict(request.FILES), 'HERE')
     file = request.FILES['table']
     if validator(file.name): return redirect('/')
     path = save_file(file)
@@ -18,6 +18,10 @@ def data_parser(request):
     if status != True: return redirect('/')
     return redirect('/data_view/')
 
+
+def wipe_data(request):
+    DB().wipe_data()
+    return redirect('/')
 # def data_view(request):
 #     products = Product.objects.all
 #     return render(request, 'table.html', {"products": products})

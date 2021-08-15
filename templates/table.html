@@ -1,59 +1,3 @@
-{% comment %} <!DOCTYPE html>
-{% load static %}
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href={% static "/table.css" %}>
-</head>
-
-<body>
-    <table class="table">
-        <tr>
-            <td>Код</td>
-            <td>Наименование</td>
-            <td>Уровень1</td>
-            <td>Уровень2</td>
-            <td>Уровень3</td>
-            <td>Цена</td>
-            <td>ЦенаСП</td>
-            <td>Количество</td>
-            <td>Поля свойств</td>
-            <td>Совместные покупки</td>
-            <td>Единица измерения</td>
-            <td>Картинка</td>
-            <td>Выводить на главной</td>
-            <td>Описание</td>
-        </tr>
-
-    {% for product in products %}
-        <tr>
-            <td>{{ product.code }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.level1.name }}</td>
-            <td>{{ product.level2.name }}</td>
-            <td>{{ product.level3.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.priceSP }}</td>
-            <td>{{ product.unit.name }}</td>
-            <td>{{ product.count }}</td>
-            <td>{{ product.properties }}</td>
-            <td>{{ product.joint_purchases }}</td>
-            <td>{{ product.picture }}</td>
-            <td>{{ product.on_general }}</td>
-            <td>{{ product.note }}</td>
-        </tr>
-    {% endfor %}
-<table/>
-</body>
-</html>
-{% endcomment %}
-
 <!DOCTYPE html>
 {% load static %}
 
@@ -70,7 +14,7 @@
 </head>
 <body>
     <header>
-        <a href="/data_view" class="header-button">
+        <a href="/wipe_data" class="header-button">
             <p><b>Очистить данные</b></p>
         </a>
         <a href="/" class="header-button">
@@ -79,27 +23,7 @@
     </header>
     
     <div class="table_container">
-        <form class="next_buttons" action="/data_view"> 
-            <button type="submit" name="skipped_page" value="-1" class="header-button">
-                <p><b> ← 1 </b></p>
-            </button>
-            <button type="submit" name="skipped_page" value="-5" class="header-button">
-                <p><b> ← 5 </b></p>
-            </button>
-            <div name='current_page' value="{{ current_page }}"><p>Страниц {{ current_page }}/{{ all_pages }}</p></div>
-            <button type="submit" name="skipped_page" value="0" class="header-button">
-                <p><b>Показать</b></p>
-            </button>
-            <input style='display:none' name="current_page" value="{{ current_page }}">
-
-            <div>Записей<input type="number" min="1" max="{{ count_items }}" size="5" name="items" value="{{ items }}" onclick="update_link(this.value)"> из {{ count_items }} </div>
-            <button type="submit" name="skipped_page" value="5" class="header-button">
-                <p><b> 5 → </b></p>
-            </button>
-            <button type="submit" name="skipped_page" value="1" class="header-button">
-                <p><b> 1 → </b></p>
-            </button>
-        </form>
+    {% include "panel.html" %}
         <table class="table">
         <tr>
             <td>Код</td>
@@ -137,28 +61,7 @@
             </tr>
         {% endfor %}
         </table>
-        <form class="next_buttons" action="/data_view"> 
-            <button type="submit" name="skipped_page" value="-1" class="header-button">
-                <p><b> ← 1 </b></p>
-            </button>
-            <button type="submit" name="skipped_page" value="-5" class="header-button">
-                <p><b> ← 5 </b></p>
-            </button>
-            <div name='current_page' value="{{ current_page }}"><p>Страниц {{ current_page }}/{{ all_pages }}</p></div>
-            <button type="submit" name="skipped_page" value="0" class="header-button">
-                <p><b>Показать</b></p>
-            </button>
-            
-            <input style='display:none' name="current_page" value="{{ current_page }}">
-
-            <div>Записей<input type="number" min="1" max="{{ count_items }}" size="5" name="items" value="{{ items }}" onclick="update_link(this.value)"> из {{ count_items }} </div>
-            <button type="submit" name="skipped_page" value="5" class="header-button">
-                <p><b> 5 → </b></p>
-            </button>
-            <button type="submit" name="skipped_page" value="1" class="header-button">
-                <p><b> 1 → </b></p>
-            </button>
-        </form>
+        {% include "panel.html" %}
     </div>
     
 </body>

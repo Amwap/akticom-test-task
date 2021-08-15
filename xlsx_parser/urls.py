@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page, name='page'),
     path('data_parser/', views.data_parser, name='data_parser'),
-    path('data_view/', table_view.Table.as_view())
+    path('data_view/', table_view.Table.as_view()),
+    path('wipe_data/', views.wipe_data)
 ]
