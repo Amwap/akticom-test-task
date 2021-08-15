@@ -2,7 +2,7 @@ from .models import *
 
 
 class DB():
-    """ """ 
+    """ Класс для работы с базой данных """ 
     def __init__(self) -> None:
         self.rows = []
 
@@ -35,8 +35,6 @@ class DB():
             picture = array['Картинка'],
             on_general = array['Выводить на главной'],
         )
-
-
 
     def _set_unit(self, name:str) -> Unit:
         """ Возвращает объект единицы измерения"""

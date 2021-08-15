@@ -34,6 +34,7 @@ def parser(path:str) -> bool:
         if i == 0: 
             db.set_header(row_list)
             continue
-        db.add_to_db(row_list)
+        try:db.add_to_db(row_list)
+        except: return False
 
     return True
